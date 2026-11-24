@@ -18,7 +18,10 @@
                 <input id="password" type="password" name="password" required autocomplete="current-password">
                 @error('password') <span class="error">{{ $message }}</span> @enderror
             </div>
-            <label class="check"><input type="checkbox" name="remember"> Remember me</label>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+                <label class="check" style="margin-bottom:0"><input type="checkbox" name="remember"> Remember me</label>
+                <a href="{{ route('password.request') }}" class="small">Forgot your password?</a>
+            </div>
             <button type="submit" class="btn btn-primary" style="width:100%">Log in</button>
         </form>
         <p class="small muted center" style="margin-top:16px">New here? <a href="{{ route('register') }}">Create an account</a></p>
