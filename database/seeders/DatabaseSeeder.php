@@ -10,8 +10,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Admin account. The email and password come from the .env file
-        // (ADMIN_EMAIL / ADMIN_PASSWORD), so they are never stored on GitHub.
-        $password = env('ADMIN_PASSWORD');
+        // (ADMIN_EMAIL / ADMIN_PASSWORD) via config/ecoquest.php, so they are never stored on GitHub.
+        $password = config('ecoquest.admin.password');
         if (! $password) {
             $this->command?->warn('ADMIN_PASSWORD is not set in .env, so no admin account was created.');
 
@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         }
 
         User::updateOrCreate(
-            ['email' => env('ADMIN_EMAIL', 'admin@ecoquest.test')],
+            ['email' => config('ecoquest.admin.email')],
             ['name' => 'EcoQuest Admin', 'password' => $password, 'is_admin' => true]
         );
     }

@@ -12,6 +12,12 @@
 
 return [
 
+    // Admin login, read from .env (ADMIN_EMAIL / ADMIN_PASSWORD) so it never goes to GitHub.
+    'admin' => [
+        'email' => env('ADMIN_EMAIL', 'admin@ecoquest.test'),
+        'password' => env('ADMIN_PASSWORD'),
+    ],
+
     'points' => [
         'pre_test' => 10,
         'activity' => 20,
